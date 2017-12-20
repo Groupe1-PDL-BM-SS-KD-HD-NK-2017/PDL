@@ -35,15 +35,15 @@ public class Question7 {
 		System.out.println("Nous repondons à la question posée");
 
 		List<PCMContainer> pcmConteneurs = Code.getListPCMFromDirectory("fichiers");
-		List<String> entete = new ArrayList();
-		
-		
+		//on crée les entêtes du fichiers CSV
+		List<String> entete = new ArrayList();		
 		entete.add("Noms PCM1");
 		entete.add("Noms PCM2");
 		entete.add("Pourcentage similaires");
         entete.add("Pourcentage differences");
         entete.add("Reponse");
         List<List<String>> contenuGlobal = new ArrayList();
+        // on parcourt les PCM sauf le dernier pour pour fixer un premier
         
 		for (int i=0; i<pcmConteneurs.size()-1; i++) {
 			PCMContainer pcmConteneur = pcmConteneurs.get(i);
@@ -52,12 +52,9 @@ public class Question7 {
 			List<Feature> features= pcm.getConcreteFeatures();
 			
 			for(int k=0; k<=features.size()-1; k++) {
-			   contenus.add( features.get(k).getName());
-			   
-			}
-			
-			
-			
+			   contenus.add( features.get(k).getName());		   
+			}	
+			// on parcourt les PCM sauf le premier pour pour fixer un premier
 			   for(int j=i+1; j<=pcmConteneurs.size()-1; j++) {
 				 PCMContainer pcmConteneur2 = pcmConteneurs.get(j);
 			     PCM pcm2 = pcmConteneur2.getPcm();
@@ -67,6 +64,9 @@ public class Question7 {
 					 for (int k=0; k<=features1.size()-1; k++) {
 					    content.add( features1.get(k).getName());
 					 }
+					 // on crée les listes qui vont contenir les features des PCMS qu'on recupére en premier
+					 // pour le comparer avec le second à chaque fois
+					 
 					    HashSet<String> similarites = new HashSet<String>(contenus);
 						HashSet<String> differences = new HashSet<String>(contenus);
 						similarites.retainAll(content);
@@ -74,15 +74,19 @@ public class Question7 {
 						 
 						differences.removeAll(similarites);
 						differences.addAll(content);
-						 
+						// ici on calcule les pourcentages  
 						float total=2*similarites.size()+differences.size();
 						float pourcentageDiff=( (float)differences.size()/total)*100;
 						float pourcentageSim= 100-pourcentageDiff;
-						List<String> contenant= new ArrayList();					
+						List<String> contenant= new ArrayList();	
+						//on ajoute les données dans le fichiers CSV
 						contenant.add(pcm.getName());
 						contenant.add(pcm2.getName());
 						contenant.add(pourcentageSim+"");
 						contenant.add(pourcentageDiff+"");
+						
+						// à chaque ajout on compare si c'est >75 (le seuil) pour mettre la reponse
+						
 						if(pourcentageSim>seuil) {
 					       contenant.add("oui");		
 						}else {
@@ -100,6 +104,5 @@ public class Question7 {
 				
 		 Code.exportCSV(entete, contenuGlobal, "MatricesSimilaires"); 
    }	 		
-
 }
 
