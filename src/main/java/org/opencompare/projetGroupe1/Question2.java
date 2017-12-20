@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Question2 {
-	//Seynabou SARR
 
 	/**
 	 * Quelles sont les tailles des matrices?
