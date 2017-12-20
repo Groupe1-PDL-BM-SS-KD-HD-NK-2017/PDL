@@ -20,13 +20,16 @@
 				File fichiers[]=Code.getListFileNameFromDirectory("fichiers");
 				
 				//on crée les entêtes du fichiers CSV
+				
 				List<String> entete = new ArrayList();
 				entete.add("Noms");
 				entete.add("Nombre Features");
 				entete.add("Nombre Products");
 				entete.add("Taille PCM");
 				List<List<String>> Contenus= new ArrayList();
+				
 				// ici on parcourt tous les fichiers et on récupére à chaque fois la taille des featues et des products
+				
 				for(File fichier:fichiers) 
 				{	
 					

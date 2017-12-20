@@ -83,12 +83,16 @@
 								 
 								differences.removeAll(similarites);
 								differences.addAll(content);
+								
 								// ici on calcule les pourcentages  
+								
 								float total=2*similarites.size()+differences.size();
 								float pourcentageDiff=( (float)differences.size()/total)*100;
 								float pourcentageSim= 100-pourcentageDiff;
-								List<String> contenant= new ArrayList();	
+								List<String> contenant= new ArrayList();
+								
 								//on ajoute les données dans le fichiers CSV
+								
 								contenant.add(listeNomPCM.get(i));
 								contenant.add(listeNomPCM.get(j));
 								contenant.add(pourcentageSim+"");
