@@ -15,7 +15,7 @@ public class Question2 {
 	}
 	
 	public static void TailleMatrice() {
-		
+		//Chargement du dossier contenant les fichiers
 		File fichiers[]=Code.getListFileNameFromDirectory("fichiers");
 		//on crée les entêtes du fichiers CSV
 		List<String> entete = new ArrayList();

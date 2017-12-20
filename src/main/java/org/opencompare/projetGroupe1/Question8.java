@@ -9,6 +9,7 @@ import org.opencompare.api.java.Feature;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.Product;
+import org.opencompare.api.java.impl.PCMElementImpl;
 
 public class Question8 {
 
@@ -19,9 +20,6 @@ public class Question8 {
 
 	public static boolean fonction(String path)
 	{
-		System.out.println("------------------------------------------------------------------------------------------");
-		System.out.println("----------------------------------QUESTION 8----------------------------------------------");
-		System.out.println("Dans quel cas la procedure est defectueuse”?");
 
 		File fichier = new File(path);
 		List<PCMContainer> pcmContainers = Code.getListPCMContainers(new File(path));

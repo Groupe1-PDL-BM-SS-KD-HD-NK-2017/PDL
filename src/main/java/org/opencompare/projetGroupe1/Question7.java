@@ -24,7 +24,6 @@ public class Question7 {
 		long fin = System.currentTimeMillis();
 		System.out.println(fin-debut);		
 	}
-
 	public static void similarites() {
 		
 		System.out
@@ -33,9 +32,13 @@ public class Question7 {
 				.println("----------------------------------QUESTION 7----------------------------------------------");
 		System.out.println("Est-ce qu’on peut idenifier des matrices “similaires”?");
 		System.out.println("Nous repondons à la question posée");
+		
 		//Chargement du dossier contenant les fichiers
+		
 		List<PCMContainer> pcmConteneurs = Code.getListPCMFromDirectory("fichiers");
+		
 		//on crée les entêtes du fichiers CSV
+		
 		List<String> entete = new ArrayList();		
 		entete.add("Noms PCM1");
 		entete.add("Noms PCM2");
@@ -45,28 +48,36 @@ public class Question7 {
         List<List<String>> contenuGlobal = new ArrayList();
         // on parcourt les PCM sauf le dernier pour pour fixer un premier
         
-		for (int i=0; i<pcmConteneurs.size()-1; i++) {
-			PCMContainer pcmConteneur = pcmConteneurs.get(i);
-			PCM pcm=pcmConteneur.getPcm();
-			HashSet<String> contenus = new HashSet<String>();
-			List<Feature> features= pcm.getConcreteFeatures();
-			
+        ArrayList<ArrayList<String>> listeFeatures = new ArrayList<ArrayList<String>>();
+        ArrayList<String> listeNomPCM = new ArrayList<String>();
+        
+        for(PCMContainer pcmC : pcmConteneurs)
+        {
+        	PCM pcm = pcmC.getPcm();
+        	List<Feature> features= pcm.getConcreteFeatures();
+        	 ArrayList<String> current = new ArrayList<String>();
+             
 			for(int k=0; k<=features.size()-1; k++) {
-			   contenus.add( features.get(k).getName());		   
-			}	
-			// on parcourt les PCM sauf le premier pour pour fixer un premier
-			   for(int j=i+1; j<=pcmConteneurs.size()-1; j++) {
-				 PCMContainer pcmConteneur2 = pcmConteneurs.get(j);
-			     PCM pcm2 = pcmConteneur2.getPcm();
+				
+			   current.add( features.get(k).getName());		   
+			}
+			
+			listeFeatures.add(current);
+			listeNomPCM.add(pcm.getName());
+        	
+        }     
+      
+		for (int i=0; i<listeFeatures.size()-1; i++) {
+			HashSet<String> contenus = new HashSet<String>();
+			contenus.addAll(listeFeatures.get(i));
+			
+			for(int j=i+1; j<=listeFeatures.size()-1; j++) {
 			     HashSet<String> content = new HashSet<String>();
-			     List<Feature> features1= pcm2.getConcreteFeatures();
-			     
-					 for (int k=0; k<=features1.size()-1; k++) {
-					    content.add( features1.get(k).getName());
-					 }
-					 // on crée les listes qui vont contenir les features des PCMS qu'on recupére en premier
+			     content.addAll(listeFeatures.get(j));
+			    	 // on crée les listes qui vont contenir les features des PCMS qu'on recupére en premier
 					 // pour le comparer avec le second à chaque fois
 					 
+			     		//contenu
 					    HashSet<String> similarites = new HashSet<String>(contenus);
 						HashSet<String> differences = new HashSet<String>(contenus);
 						similarites.retainAll(content);
@@ -80,8 +91,8 @@ public class Question7 {
 						float pourcentageSim= 100-pourcentageDiff;
 						List<String> contenant= new ArrayList();	
 						//on ajoute les données dans le fichiers CSV
-						contenant.add(pcm.getName());
-						contenant.add(pcm2.getName());
+						contenant.add(listeNomPCM.get(i));
+						contenant.add(listeNomPCM.get(j));
 						contenant.add(pourcentageSim+"");
 						contenant.add(pourcentageDiff+"");
 						
