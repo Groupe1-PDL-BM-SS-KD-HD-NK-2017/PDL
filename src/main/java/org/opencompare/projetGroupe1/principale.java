@@ -19,16 +19,17 @@ public class principale {
 	public static void main(String[] args) throws IOException {
 
 
-		//Question1.fonction();
-		//Question2.TailleMatrice();
-		//Question3.fonction();
-		//Question4.fonction();
+		Question1.fonction();
+		Question2.TailleMatrice();
+		Question3 q3 = new Question3();
+		q3.fonction();
+		Question4.fonction();
 		Question4.fonction2();
-		//Question5.fonction();
-		//Question6.fonction();
-		//Question7.similarites();
-		//Question8.fonction("");
-		System.out.println("Bon");
+		Question5.fonction();
+		Question6.fonction();
+		Question7.similarites();
+		//Question8.fonction("fichiers/Comparison_between_Esperanto_and_Novial_3.pcm");
+		//System.out.println("Bon");
 
 	}
 

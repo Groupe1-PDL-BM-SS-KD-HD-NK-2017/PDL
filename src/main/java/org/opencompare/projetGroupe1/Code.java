@@ -176,7 +176,7 @@ public class Code {
 	}
 
 
-	
+
 
 	/**
 	 * Avoir les PCMContainers qui se trouvent dans le fichier passé en paramètre
@@ -234,7 +234,7 @@ public class Code {
 
 		Writer writer;
 		try {
-			writer = new FileWriter(new File(finalFileName+".csv"));
+			writer = new FileWriter(new File(""+finalFileName+".csv"));
 			writer.write(texte.toString()) ;  // écriture dans le fichier
 			writer.close();
 
