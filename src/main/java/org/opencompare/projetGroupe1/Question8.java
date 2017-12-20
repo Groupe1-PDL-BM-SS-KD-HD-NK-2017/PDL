@@ -23,9 +23,31 @@ public class Question8 {
 		System.out.println("----------------------------------QUESTION 8----------------------------------------------");
 		System.out.println("Dans quel cas la procedure est defectueuse”?");
 
-		return false;
+		File fichier = new File(path);
+		List<PCMContainer> pcmContainers = Code.getListPCMContainers(new File(path));
 
-		 //Write the function's body here
+		for ( PCMContainer pcmContainer : pcmContainers)
+		{
+
+			PCM pcm = pcmContainer.getPcm();
+			List<Feature> features = pcm.getConcreteFeatures();
+			List<Product> products = pcm.getProducts();
+
+			for( Product product : products)
+			{
+				for( Feature feature : features)
+				{
+					Cell cellule = product.findCell(feature);
+					if(cellule == null)
+					{
+						return false;
+					}
+				}
+			}
+
+		}
+
+		return true;
 	}
 
 
