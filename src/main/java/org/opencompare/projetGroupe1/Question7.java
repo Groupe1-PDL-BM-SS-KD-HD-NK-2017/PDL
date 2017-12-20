@@ -33,7 +33,7 @@ public class Question7 {
 				.println("----------------------------------QUESTION 7----------------------------------------------");
 		System.out.println("Est-ce qu’on peut idenifier des matrices “similaires”?");
 		System.out.println("Nous repondons à la question posée");
-
+		//Chargement du dossier contenant les fichiers
 		List<PCMContainer> pcmConteneurs = Code.getListPCMFromDirectory("fichiers");
 		//on crée les entêtes du fichiers CSV
 		List<String> entete = new ArrayList();		
