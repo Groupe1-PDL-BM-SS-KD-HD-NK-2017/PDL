@@ -238,7 +238,7 @@ public class Code {
 			writer.write(texte.toString()) ;  // écriture dans le fichier
 			writer.close();
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
