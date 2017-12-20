@@ -20,12 +20,12 @@ public class principale {
 
 
 		Question1.fonction();
-		Question2.fonction();
+		Question2.TailleMatrice();
 		Question3.fonction();
 		Question4.fonction();
 		Question5.fonction();
 		Question6.fonction();
-		Question7.fonction();
+		Question7.similarites();
 		Question8.fonction("");
 		System.out.println("Bon");
 
