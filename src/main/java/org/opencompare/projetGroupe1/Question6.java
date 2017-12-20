@@ -13,7 +13,9 @@ import static org.opencompare.projetGroupe1.Code.getListPCMFromDirectory;
 
 public class Question6 {
     /**
-     * Est-ce que les valeurs d’une colonne sont “homogènes” (i.e., du meme “type”)?
+     * this function makes it possible to calculate the degree of homogeneity of all thecolumns of all the PCMs contained in a file,
+     * to say yes or not if the columns arehomogeneous and generates a file .CSV to visualize the
+     * result(name of PCM, name of column "feature", the degree of homogeneity and non-homogeneity).
      */
     public static void main(String[] args) {
         fonction();
