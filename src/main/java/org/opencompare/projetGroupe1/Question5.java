@@ -17,6 +17,10 @@ public class Question5 {
         fonction();
     }
 
+    /**
+     * this function makes it possible to show that there is only correlation between
+     * the predominant "Boolean" and "NotAvailable" types of "feature" and the values of the cells.
+     */
     public static void fonction() {
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.println("----------------------------------QUESTION 5----------------------------------------------");
