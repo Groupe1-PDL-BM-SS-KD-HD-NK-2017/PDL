@@ -43,25 +43,29 @@ List<List<String>> contenuFinal=new ArrayList();
 		for (PCMContainer pcmContainer : pcmContainers) {
            // Get the PCM
           PCM pcm = pcmContainer.getPcm();
+          // Find the cell corresponding to the current feature and product
+
           for (Feature feature : pcm.getConcreteFeatures()) {
 
-              // Browse the cells of the PCM
-        	  for (Product product : pcm.getProducts()) {
-        		  // Find the cell corresponding to the current feature and product
+          // Browse the cells of the PCM
+          for (Product product : pcm.getProducts()) {
+        // Find the cell corresponding to the current feature and product
         	  
-        		  celules.add(product.getCells());
-    }}}
- for(List<Cell> celuls : celules)
+         celules.add(product.getCells());
+             }}}
+
+         for(List<Cell> celuls : celules)
            {
-			 for(Cell celule : celuls){
-				 
+			 for(Cell celule : celuls){ 
 			String contenu=celule.getContent();
 			contenu=contenu.replace(";"," ");
 			contenu=contenu.replace('\n', ' ');
              temporaireCele.add(contenu) ;
 		    	 
-			 }   }
+			 }}
+         
 HashMap<String,Integer> lesOccurrences=Code.getOccurrence(temporaireCele);
+  //export the csv file
 
 	List<List<String>> contenuFinal= Code.getListOfListFromHashMap(lesOccurrences);
 	Code.exportCSV(titre, contenuFinal, "occurenece-cellule");
