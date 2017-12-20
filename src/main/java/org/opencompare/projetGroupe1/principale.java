@@ -19,14 +19,15 @@ public class principale {
 	public static void main(String[] args) throws IOException {
 
 
-		Question1.fonction();
-		Question2.TailleMatrice();
-		Question3.fonction();
-		Question4.fonction();
-		Question5.fonction();
-		Question6.fonction();
-		Question7.similarites();
-		Question8.fonction("");
+		//Question1.fonction();
+		//Question2.TailleMatrice();
+		//Question3.fonction();
+		//Question4.fonction();
+		Question4.fonction2();
+		//Question5.fonction();
+		//Question6.fonction();
+		//Question7.similarites();
+		//Question8.fonction("");
 		System.out.println("Bon");
 
 	}
